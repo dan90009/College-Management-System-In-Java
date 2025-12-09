@@ -1,369 +1,0 @@
-
-1.0dan90009_QualityJavaFrontend"1765265861478*java2.B–
-+
-&src/collegeapplication/chat/Group.java2
-	
-type3
-	
-MAIN4
-
-package6
-
-collegeapplication.chat7
-"
-collegeapplication.chat.Group9
-
-class10
-
-access11
-
-	protected12
-
-simple-name13
-
-Group14
-.
-(collegeapplication.chat.Group.groupimage16
-
-field17
-
-private18
-
-
-groupimage19
--
-'collegeapplication.chat.Group.groupname21
-
-	groupname22
-+
-%collegeapplication.chat.Group.members24
-
-members25
-.
-(collegeapplication.chat.Group.courcecode27
-
-
-courcecode28
--
-'collegeapplication.chat.Group.semoryear30
-
-	semoryear31
-?
-9collegeapplication.chat.Group#setImage(Ljava/awt/Image;)V33
-
-method34
-
-public35
-
-setImage36
-
-
-uses37
-
-
-references38
-E
-?collegeapplication.chat.Group#setGroupName(Ljava/lang/String;)V40
-
-setGroupName41
-F
-@collegeapplication.chat.Group#setCourceCode(Ljava/lang/String;)V43
-
-setCourceCode44
-.
-(collegeapplication.chat.Group#setSem(I)V46
-
-setSem47
-2
-,collegeapplication.chat.Group#setMembers(I)V49
-
-
-setMembers50
->
-8collegeapplication.chat.Group#getImage()Ljava/awt/Image;52
-
-getImage53
-D
->collegeapplication.chat.Group#getGroupName()Ljava/lang/String;55
-
-getGroupName56
-E
-?collegeapplication.chat.Group#getCourceCode()Ljava/lang/String;58
-
-getCourceCode59
-3
--collegeapplication.chat.Group#getSemorYear()I61
-
-getSemorYear62
-1
-+collegeapplication.chat.Group#getMembers()I64
-
-
-getMembers65J
-
-1
-12
-
-
-3
-4Z
-
-5	
-576jª
-A
-26;
-262717 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-28
-A
-48;
-484934 *
-1" "(28:5B
-
-
-11
-35
-
-
-13
-50
-A
-57;
-575834 *
-1. .(28:5B
-
-
-11
-35
-
-
-13
-59
-A
-29;
-293017 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-31
-A
-42;
-424334 *
-1 (28:5B
-
-
-11
-35
-
-
-13
-44
-;
-86
-8910 *
-1 (:5B
-
-
-11
-12
-
-
-13
-14
-A
-60;
-606134 *
-12 2(28:5B
-
-
-11
-35
-
-
-13
-62
-A
-32;
-323334 *
-1 (28:5B
-
-
-11
-35
-
-
-13
-36
-A
-45;
-454634 *
-1 (28:5B
-
-
-11
-35
-
-
-13
-47
-A
-63;
-636434 *
-16 6(28:5B
-
-
-11
-35
-
-
-13
-65
-A
-23;
-232417 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-25
-A
-54;
-545534 *
-1* *(28:5B
-
-
-11
-35
-
-
-13
-56
-A
-20;
-202117 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-22
-A
-15;
-151617 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-19
-A
-39;
-394034 *
-1 (28:5B
-
-
-11
-35
-
-
-13
-41
-A
-51;
-515234 *
-1& &(28:5B
-
-
-11
-35
-
-
-13
-53r’
-
-32837*
-1 (
-
-32838*
-1 (
-
-321538*
-1 (
-
-39837*
-1 (
-
-39838*
-1 (
-
-392038*
-1 (
-
-42837*
-1 (
-
-42838*
-1 (
-
-422638*
-1 (
-
-45837*
-1   (
-
-45838*
-1   (
-
-452938*
-1   (
-
-48837*
-1$ $(
-
-48838*
-1$ $(
-
-482338*
-1$ $(
-
-511538*
-1(
- ((
-
-542038*
-1,
- ,(
-
-572638*
-10
- 0(
-
-602938*
-14
- 4(
-
-632338*
-18
- 8(

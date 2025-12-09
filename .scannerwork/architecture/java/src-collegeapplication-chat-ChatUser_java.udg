@@ -1,818 +1,0 @@
-
-1.0dan90009_QualityJavaFrontend"1765265860927*java2.B∆
-.
-)src/collegeapplication/chat/ChatUser.java2
-	
-type3
-	
-MAIN4
-
-package6
-
-collegeapplication.chat7
-%
- collegeapplication.chat.ChatUser9
-
-class10
-
-access11
-
-public12
-
-simple-name13
-
-ChatUser14
-7
-1collegeapplication.chat.ChatUser.serialVersionUID16
-
-field17
-
-private18
-
-serialVersionUID19
-1
-+collegeapplication.chat.ChatUser.fromuserid21
-
-
-fromuserid22
-3
--collegeapplication.chat.ChatUser.fromusername24
-
-fromusername25
-2
-,collegeapplication.chat.ChatUser.messagetime27
-
-messagetime28
-2
-,collegeapplication.chat.ChatUser.messagedate30
-
-messagedate31
-.
-(collegeapplication.chat.ChatUser.message33
-
-message34
-/
-)collegeapplication.chat.ChatUser.touserid36
-
-touserid37
-1
-+collegeapplication.chat.ChatUser.tousername39
-
-
-tousername40
-2
-,collegeapplication.chat.ChatUser.userprofile42
-
-userprofile43
-,
-&collegeapplication.chat.ChatUser.sr_no45
-
-sr_no46
-/
-)collegeapplication.chat.ChatUser.isactive48
-
-isactive49
--
-'collegeapplication.chat.ChatUser.readby51
-
-readby52
-E
-?collegeapplication.chat.ChatUser#setReadBy(Ljava/lang/String;)V54
-
-method55
-
-	setReadBy56
-
-
-uses57
-
-
-references58
-J
-Dcollegeapplication.chat.ChatUser#setUserProfile(Ljava/lang/String;)V60
-
-setUserProfile61
-3
--collegeapplication.chat.ChatUser#setSr_no(I)V63
-
-setSr_no64
-I
-Ccollegeapplication.chat.ChatUser#setFromUserID(Ljava/lang/String;)V66
-
-setFromUserID67
-K
-Ecollegeapplication.chat.ChatUser#setFromUserName(Ljava/lang/String;)V69
-
-setFromUserName70
-G
-Acollegeapplication.chat.ChatUser#setToUserID(Ljava/lang/String;)V72
-
-setToUserID73
-J
-Dcollegeapplication.chat.ChatUser#setMessageTime(Ljava/lang/String;)V75
-
-setMessageTime76
-J
-Dcollegeapplication.chat.ChatUser#setMessageDate(Ljava/lang/String;)V78
-
-setMessageDate79
-F
-@collegeapplication.chat.ChatUser#setMessage(Ljava/lang/String;)V81
-
-
-setMessage82
-Y
-Scollegeapplication.chat.ChatUser#setFromUser(Ljava/lang/String;Ljava/lang/String;)V84
-
-setFromUser85
-V
-Pcollegeapplication.chat.ChatUser#setMessage(Ljava/lang/String;Ljava/util/Date;)V87
-j
-dcollegeapplication.chat.ChatUser#setToUser(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V89
-
-	setToUser90
-H
-Bcollegeapplication.chat.ChatUser#getFromUserId()Ljava/lang/String;92
-
-getFromUserId93
-I
-Ccollegeapplication.chat.ChatUser#getUserProfile()Ljava/lang/String;95
-
-getUserProfile96
-J
-Dcollegeapplication.chat.ChatUser#getFromUserName()Ljava/lang/String;98
-
-getFromUserName99
-F
-?collegeapplication.chat.ChatUser#getMessage()Ljava/lang/String;101
-
-
-getMessage102
-J
-Ccollegeapplication.chat.ChatUser#getMessageTime()Ljava/lang/String;104
-
-getMessageTime105
-J
-Ccollegeapplication.chat.ChatUser#getMessageDate()Ljava/lang/String;107
-
-getMessageDate108
-G
-@collegeapplication.chat.ChatUser#getToUserId()Ljava/lang/String;110
-
-getToUserId111
-I
-Bcollegeapplication.chat.ChatUser#getToUserName()Ljava/lang/String;113
-
-getToUserName114
-3
-,collegeapplication.chat.ChatUser#isActive()Z116
-
-isActive117
-3
-,collegeapplication.chat.ChatUser#getSr_no()I119
-
-getSr_no120
-E
->collegeapplication.chat.ChatUser#getReadBy()Ljava/lang/String;122
-
-	getReadBy123J
-
-1
-12
-
-
-3
-4Z
-
-5	
-576jà
-E
-118>
-11811955 *
-1| |(28:5B
-
-
-11
-12
-
-13
-120
-A
-91;
-919255 *
-1V V(28:5B
-
-
-11
-12
-
-
-13
-93
-A
-20;
-202117 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-22
-A
-83;
-838455 *
-1A A(28:5B
-
-
-11
-12
-
-
-13
-85
-A
-88;
-888955 *
-1O O(28:5B
-
-
-11
-12
-
-
-13
-90
-A
-68;
-686955 *
-1- -(28:5B
-
-
-11
-12
-
-
-13
-70
-A
-74;
-747555 *
-15 5(28:5B
-
-
-11
-12
-
-
-13
-76
-A
-23;
-232417 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-25
-A
-94;
-949555 *
-1Z Z(28:5B
-
-
-11
-12
-
-
-13
-96
-A
-35;
-353617 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-37
-E
-103>
-10310455 *
-1g g(28:5B
-
-
-11
-12
-
-13
-105
-E
-115>
-11511655 *
-1x x(28:5B
-
-
-11
-12
-
-13
-117
-A
-15;
-151617 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-19
-;
-86
-8910 *
-1 (:5B
-
-
-11
-12
-
-
-13
-14
-A
-80;
-808155 *
-1= =(28:5B
-
-
-11
-12
-
-
-13
-82
-A
-86;
-868755 *
-1F F(28:5B
-
-
-11
-12
-
-
-13
-82
-A
-29;
-293017 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-31
-A
-77;
-777855 *
-19 9(28:5B
-
-
-11
-12
-
-
-13
-79
-A
-44;
-444517 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-46
-A
-32;
-323317 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-34
-A
-41;
-414217 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-43
-A
-50;
-505117 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-52
-A
-71;
-717255 *
-11 1(28:5B
-
-
-11
-12
-
-
-13
-73
-E
-100>
-10010155 *
-1b b(28:5B
-
-
-11
-12
-
-13
-102
-G
-121@
-12112255 *
-1Ä Ä(28:5B
-
-
-11
-12
-
-13
-123
-A
-59;
-596055 *
-1! !(28:5B
-
-
-11
-12
-
-
-13
-61
-A
-47;
-474817 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-49
-E
-109>
-10911055 *
-1p p(28:5B
-
-
-11
-12
-
-13
-111
-A
-65;
-656655 *
-1) )(28:5B
-
-
-11
-12
-
-
-13
-67
-E
-106>
-10610755 *
-1k k(28:5B
-
-
-11
-12
-
-13
-108
-A
-38;
-383917 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-40
-E
-112>
-11211355 *
-1t t(28:5B
-
-
-11
-12
-
-13
-114
-A
-26;
-262717 *
-1 (	28:5B
-
-
-11
-18
-
-
-13
-28
-A
-97;
-979855 *
-1^ ^(28:5B
-
-
-11
-12
-
-
-13
-99
-A
-62;
-626355 *
-1% %(28:5B
-
-
-11
-12
-
-
-13
-64
-A
-53;
-535455 *
-1 (28:5B
-
-
-11
-12
-
-
-13
-56r¡
-
-53857*
-1 (
-
-53858*
-1 (
-
-535058*
-1 (
-
-59857*
-1# #(
-
-59858*
-1# #(
-
-594158*
-1# #(
-
-62857*
-1' '(
-
-62858*
-1' '(
-
-624458*
-1' '(
-
-65857*
-1+ +(
-
-65858*
-1+ +(
-
-652058*
-1+ +(
-
-68857*
-1/ /(
-
-68858*
-1/ /(
-
-682358*
-1/ /(
-
-71857*
-13 3(
-
-71858*
-13 3(
-
-713558*
-13 3(
-
-74857*
-17 7(
-
-74858*
-17 7(
-
-742658*
-17 7(
-
-77857*
-1; ;(
-
-77858*
-1; ;(
-
-772958*
-1; ;(
-
-80857*
-1? ?(
-
-80858*
-1? ?(
-
-803258*
-1? ?(
-
-83857*
-1C C(
-
-83858*
-1C C(
-
-832058*
-1C C(
-
-83857*
-1D D(
-
-83858*
-1D D(
-
-832358*
-1D D(
-
-86857*
-1H H(
-
-86858*
-1H H(
-
-863258*
-1H H(
-
-86857*
-1K K(
-
-86858*
-1K K(
-
-862658*
-1K K(
-
-86857*
-1L L(
-
-86858*
-1L L(
-
-862958*
-1L L(
-
-88857*
-1Q Q(
-
-88858*
-1Q Q(
-
-884158*
-1Q Q(
-
-88857*
-1R R(
-
-88858*
-1R R(
-
-883558*
-1R R(
-
-88857*
-1S S(
-
-88858*
-1S S(
-
-883858*
-1S S(
-
-88857*
-1T T(
-
-88858*
-1T T(
-
-884758*
-1T T(
-
-912058*
-1X
- X(
-
-944158*
-1\
- \(
-
-972358*
-1`
- `(
-
-1003258*
-1d
- d(
-
-1032658*
-1i
- i(
-
-1062958*
-1m
- m(
-
-1093558*
-1r
- r(
-
-1123858*
-1v
- v(
-
-1154758*
-1z
- z(
-
-1184458*
-1~
- ~(
-
-1215058*
-1Ç
- Ç(

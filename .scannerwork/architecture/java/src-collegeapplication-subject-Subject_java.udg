@@ -1,418 +1,0 @@
-
-1.0dan90009_QualityJavaFrontend"1765265874019*java2.BÐ
-0
-+src/collegeapplication/subject/Subject.java2
-	
-type3
-	
-MAIN4
-
-package6
-
-collegeapplication.subject7
-'
-"collegeapplication.subject.Subject9
-
-class10
-
-access11
-
-public12
-
-simple-name13
-
-Subject14
-&
- collegeapplication.cource.Cource16
-
-unknown17
-
-extends18
-
-
-uses19
-4
-.collegeapplication.subject.Subject.subjectname21
-
-field22
-
-private23
-
-subjectname24
-4
-.collegeapplication.subject.Subject.subjectcode26
-
-subjectcode27
-7
-1collegeapplication.subject.Subject.maxtheorymarks29
-
-maxtheorymarks30
-:
-4collegeapplication.subject.Subject.maxpracticalmarks32
-
-maxpracticalmarks33
-4
-.collegeapplication.subject.Subject.subjecttype35
-
-subjecttype36
-L
-Fcollegeapplication.subject.Subject#setSubjectType(Ljava/lang/String;)V38
-
-method39
-
-setSubjectType40
-
-
-references41
->
-8collegeapplication.subject.Subject#setMaxTheoryMarks(I)V43
-
-setMaxTheoryMarks44
-A
-;collegeapplication.subject.Subject#setMaxPracticalMarks(I)V46
-
-setMaxPracticalMarks47
-L
-Fcollegeapplication.subject.Subject#setSubjectName(Ljava/lang/String;)V49
-
-setSubjectName50
-L
-Fcollegeapplication.subject.Subject#setSubjectCode(Ljava/lang/String;)V52
-
-setSubjectCode53
-9
-3collegeapplication.subject.Subject#setSemorYear(I)V55
-
-setSemorYear56
-7
-1collegeapplication.cource.Cource#setSemorYear(I)V58
-
-calls59
-K
-Ecollegeapplication.subject.Subject#getSubjectCode()Ljava/lang/String;61
-
-getSubjectCode62
-K
-Ecollegeapplication.subject.Subject#getSubjectName()Ljava/lang/String;64
-
-getSubjectName65
-=
-7collegeapplication.subject.Subject#getMaxTheoryMarks()I67
-
-getMaxTheoryMarks68
-@
-:collegeapplication.subject.Subject#getMaxPracticalMarks()I70
-
-getMaxPracticalMarks71
-K
-Ecollegeapplication.subject.Subject#getSubjectType()Ljava/lang/String;73
-
-getSubjectType74J
-
-1
-12
-
-
-3
-4Z
-
-5	
-576j•	
-A
-37;
-373839 *
-1 (28:5B
-
-
-11
-12
-
-
-13
-40
-
-15
-151617
-A
-69;
-697039 *
-13 3(28:5B
-
-
-11
-12
-
-
-13
-71
-A
-54;
-545539 *
-1# #(28:5B
-
-
-11
-12
-
-
-13
-56
-A
-20;
-202122 *
-1 (	28:5B
-
-
-11
-23
-
-
-13
-24
-A
-51;
-515239 *
-1 (28:5B
-
-
-11
-12
-
-
-13
-53
-A
-25;
-252622 *
-1	 	(	28:5B
-
-
-11
-23
-
-
-13
-27
-A
-48;
-484939 *
-1 (28:5B
-
-
-11
-12
-
-
-13
-50
-A
-63;
-636439 *
-1+ +(28:5B
-
-
-11
-12
-
-
-13
-65
-A
-31;
-313222 *
-1 (	28:5B
-
-
-11
-23
-
-
-13
-33
-;
-86
-8910 *
-1 (:5B
-
-
-11
-12
-
-
-13
-14
-A
-66;
-666739 *
-1/ /(28:5B
-
-
-11
-12
-
-
-13
-68
-A
-45;
-454639 *
-1 (28:5B
-
-
-11
-12
-
-
-13
-47
-A
-42;
-424339 *
-1 (28:5B
-
-
-11
-12
-
-
-13
-44
-A
-34;
-343522 *
-1 (	28:5B
-
-
-11
-23
-
-
-13
-36
-
-57
-575817
-A
-60;
-606139 *
-1' '(28:5B
-
-
-11
-12
-
-
-13
-62
-A
-28;
-282922 *
-1
- 
-(	28:5B
-
-
-11
-23
-
-
-13
-30
-A
-72;
-727339 *
-17 7(28:5B
-
-
-11
-12
-
-
-13
-74rË
-
-81518*
-1 ($
-
-81519*
-1 ($
-
-37819*
-1 (
-
-37841*
-1 (
-
-373441*
-1 (
-
-42819*
-1 (
-
-42841*
-1 (
-
-422841*
-1 (
-
-45819*
-1 (
-
-45841*
-1 (
-
-453141*
-1 (
-
-48819*
-1 (
-
-48841*
-1 (
-
-482041*
-1 (
-
-51819*
-1! !(
-
-51841*
-1! !(
-
-512541*
-1! !(
-
-541541*
-1% %(
-
-545759*
-1%	 %(
-
-54841*
-1% %(
-
-541519*
-1% %(
-
-54841*
-1% %(
-
-602541*
-1)
- )(
-
-632041*
-1-
- -(
-
-662841*
-11
- 1(
-
-693141*
-15
- 5(
-
-723441*
-19
- 9(

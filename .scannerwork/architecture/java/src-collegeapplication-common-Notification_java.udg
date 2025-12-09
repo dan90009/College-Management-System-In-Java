@@ -1,541 +1,0 @@
-
-1.0dan90009_QualityJavaFrontend"1765265861398*java2.Bø
-4
-/src/collegeapplication/common/Notification.java2
-	
-type3
-	
-MAIN4
-
-package6
-
-collegeapplication.common7
-+
-&collegeapplication.common.Notification9
-
-class10
-
-access11
-
-public12
-
-simple-name13
-
-Notification14
-&
- collegeapplication.cource.Cource16
-
-unknown17
-
-extends18
-
-
-uses19
-1
-+collegeapplication.common.Notification.time21
-
-field22
-
-private23
-
-
-time24
-2
-,collegeapplication.common.Notification.title26
-
-title27
-4
-.collegeapplication.common.Notification.message29
-
-message30
-3
--collegeapplication.common.Notification.readby32
-
-readby33
-2
-,collegeapplication.common.Notification.sr_no35
-
-sr_no36
-3
--collegeapplication.common.Notification.userid38
-
-userid39
-8
-2collegeapplication.common.Notification.userprofile41
-
-userprofile42
-P
-Jcollegeapplication.common.Notification#setUserProfile(Ljava/lang/String;)V44
-
-method45
-
-setUserProfile46
-
-
-references47
-8
-2collegeapplication.common.Notification#setSrNo(I)V49
-
-setSrNo50
-K
-Ecollegeapplication.common.Notification#setUserId(Ljava/lang/String;)V52
-
-	setUserId53
-I
-Ccollegeapplication.common.Notification#setTime(Ljava/lang/String;)V55
-
-setTime56
-J
-Dcollegeapplication.common.Notification#setTitle(Ljava/lang/String;)V58
-
-setTitle59
-L
-Fcollegeapplication.common.Notification#setMessage(Ljava/lang/String;)V61
-
-
-setMessage62
-K
-Ecollegeapplication.common.Notification#setReadBy(Ljava/lang/String;)V64
-
-	setReadBy65
-7
-1collegeapplication.common.Notification#getSrNo()I67
-
-getSrNo68
-J
-Dcollegeapplication.common.Notification#getUserId()Ljava/lang/String;70
-
-	getUserId71
-I
-Ccollegeapplication.common.Notification#getTitle()Ljava/lang/String;73
-
-getTitle74
-K
-Ecollegeapplication.common.Notification#getMessage()Ljava/lang/String;76
-
-
-getMessage77
-J
-Dcollegeapplication.common.Notification#getReadBy()Ljava/lang/String;79
-
-	getReadBy80
-T
-Ncollegeapplication.common.Notification#getNotificationDate()Ljava/lang/String;82
-
-getNotificationDate83
-H
-Bcollegeapplication.common.Notification#getTime()Ljava/lang/String;85
-
-getTime86
-T
-Ncollegeapplication.common.Notification#getNotificationTime()Ljava/lang/String;88
-
-getNotificationTime89
-O
-Icollegeapplication.common.Notification#getUserProfile()Ljava/lang/String;91
-
-getUserProfile92J
-
-1
-12
-
-
-3
-4Z
-
-5	
-576j÷
-A
-37;
-373822 *
-1 (	28:5B
-
-
-11
-23
-
-
-13
-39
-
-15
-151617
-A
-48;
-484945 *
-1 (28:5B
-
-
-11
-12
-
-
-13
-50
-A
-72;
-727345 *
-19 9(28:5B
-
-
-11
-12
-
-
-13
-74
-A
-78;
-787945 *
-1A A(28:5B
-
-
-11
-12
-
-
-13
-80
-;
-86
-8910 *
-1	 	(:5B
-
-
-11
-12
-
-
-13
-14
-A
-31;
-313222 *
-1 (	28:5B
-
-
-11
-23
-
-
-13
-33
-A
-84;
-848545 *
-1R R(28:5B
-
-
-11
-12
-
-
-13
-86
-A
-87;
-878845 *
-1V V(28:5B
-
-
-11
-12
-
-
-13
-89
-A
-40;
-404122 *
-1 (	28:5B
-
-
-11
-23
-
-
-13
-42
-A
-90;
-909145 *
-1b b(28:5B
-
-
-11
-12
-
-
-13
-92
-A
-60;
-606145 *
-1) )(28:5B
-
-
-11
-12
-
-
-13
-62
-A
-81;
-818245 *
-1E E(28:5B
-
-
-11
-12
-
-
-13
-83
-A
-69;
-697045 *
-15 5(28:5B
-
-
-11
-12
-
-
-13
-71
-A
-51;
-515245 *
-1 (28:5B
-
-
-11
-12
-
-
-13
-53
-A
-20;
-202122 *
-1 (	28:5B
-
-
-11
-23
-
-
-13
-24
-A
-57;
-575845 *
-1% %(28:5B
-
-
-11
-12
-
-
-13
-59
-A
-28;
-282922 *
-1 (	28:5B
-
-
-11
-23
-
-
-13
-30
-A
-75;
-757645 *
-1= =(28:5B
-
-
-11
-12
-
-
-13
-77
-A
-63;
-636445 *
-1- -(28:5B
-
-
-11
-12
-
-
-13
-65
-A
-43;
-434445 *
-1 (28:5B
-
-
-11
-12
-
-
-13
-46
-A
-66;
-666745 *
-11 1(28:5B
-
-
-11
-12
-
-
-13
-68
-A
-34;
-343522 *
-1 (	28:5B
-
-
-11
-23
-
-
-13
-36
-A
-25;
-252622 *
-1 (	28:5B
-
-
-11
-23
-
-
-13
-27
-A
-54;
-545545 *
-1! !(28:5B
-
-
-11
-12
-
-
-13
-56r–
-
-81518*
-1	# 	()
-
-81519*
-1	# 	()
-
-43819*
-1 (
-
-43847*
-1 (
-
-434047*
-1 (
-
-48819*
-1 (
-
-48847*
-1 (
-
-483447*
-1 (
-
-51819*
-1 (
-
-51847*
-1 (
-
-513747*
-1 (
-
-54819*
-1# #(
-
-54847*
-1# #(
-
-542047*
-1# #(
-
-57819*
-1' '(
-
-57847*
-1' '(
-
-572547*
-1' '(
-
-60819*
-1+ +(
-
-60847*
-1+ +(
-
-602847*
-1+ +(
-
-63819*
-1/ /(
-
-63847*
-1/ /(
-
-633147*
-1/ /(
-
-663447*
-13
- 3(
-
-693747*
-17
- 7(
-
-722547*
-1;
- ;(
-
-752847*
-1?
- ?(
-
-783147*
-1C
- C(
-
-812047*
-1K K(
-
-842047*
-1T
- T(
-
-872047*
-1\ \(
-
-904047*
-1d
- d(

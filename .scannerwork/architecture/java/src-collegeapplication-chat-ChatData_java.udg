@@ -1,1051 +1,0 @@
-
-1.0dan90009_QualityJavaFrontend"1765265880354*java2.BÚ
-.
-)src/collegeapplication/chat/ChatData.java2
-	
-type3
-	
-MAIN4
-
-package6
-
-collegeapplication.chat7
-%
- collegeapplication.chat.ChatData9
-
-class10
-
-access11
-
-public12
-
-simple-name13
-
-ChatData14
-*
-$collegeapplication.chat.ChatData.con16
-
-field17
-
-	protected18
-	
-con19
-2
-,collegeapplication.common.DataBaseConnection21
-
-unknown22
-
-
-references23
-W
-Qcollegeapplication.common.DataBaseConnection#getConnection()Ljava/sql/Connection;25
-
-calls26
-
-
-uses27
-W
-Qcollegeapplication.chat.ChatData#saveMessage(Lcollegeapplication/chat/ChatUser;)I29
-
-method30
-
-saveMessage31
-&
- collegeapplication.chat.ChatUser33
-
-	has param34
-
-is type35
-2
-,collegeapplication.chat.ChatUser#getSr_no()I37
-H
-Bcollegeapplication.chat.ChatUser#getFromUserId()Ljava/lang/String;39
-J
-Dcollegeapplication.chat.ChatUser#getFromUserName()Ljava/lang/String;41
-F
-@collegeapplication.chat.ChatUser#getToUserId()Ljava/lang/String;43
-E
-?collegeapplication.chat.ChatUser#getMessage()Ljava/lang/String;45
-I
-Ccollegeapplication.chat.ChatUser#getMessageTime()Ljava/lang/String;47
-I
-Ccollegeapplication.chat.ChatUser#getMessageDate()Ljava/lang/String;49
-I
-Ccollegeapplication.chat.ChatData#getMessages()Ljava/util/ArrayList;51
-
-getMessages52
-3
--collegeapplication.chat.ChatUser#setSr_no(I)V54
-I
-Ccollegeapplication.chat.ChatUser#setFromUserID(Ljava/lang/String;)V56
-K
-Ecollegeapplication.chat.ChatUser#setFromUserName(Ljava/lang/String;)V58
-G
-Acollegeapplication.chat.ChatUser#setToUserID(Ljava/lang/String;)V60
-F
-@collegeapplication.chat.ChatUser#setMessage(Ljava/lang/String;)V62
-J
-Dcollegeapplication.chat.ChatUser#setMessageTime(Ljava/lang/String;)V64
-J
-Dcollegeapplication.chat.ChatUser#setMessageDate(Ljava/lang/String;)V66
-E
-?collegeapplication.chat.ChatUser#setReadBy(Ljava/lang/String;)V68
-o
-icollegeapplication.chat.ChatData#getUserMessages(Lcollegeapplication/chat/ChatUser;)Ljava/util/ArrayList;70
-
-getUserMessages71
-
-ycollegeapplication.chat.ChatData#getNewMessages(Ljava/lang/String;Ljava/lang/String;)Lcollegeapplication/chat/NewMessage;73
-
-getNewMessages74
-(
-"collegeapplication.chat.NewMessage76
-
-returns77
-V
-Pcollegeapplication.chat.ChatData#isReadBy(Ljava/lang/String;Ljava/lang/String;)Z79
-.
-(collegeapplication.chat.NewMessage.total81
-0
-*collegeapplication.chat.NewMessage.message83
-4
-.collegeapplication.chat.NewMessage.messagetime85
-K
-Ecollegeapplication.chat.NewMessage#getCurrentDate()Ljava/lang/String;87
-
-ycollegeapplication.chat.ChatData#getLastMessage(Ljava/lang/String;Ljava/lang/String;)Lcollegeapplication/chat/NewMessage;89
-E
-?collegeapplication.chat.ChatData#getReadBy(I)Ljava/lang/String;91
-
-	getReadBy92
-
-getLastMessage93
-
-isReadBy94
-C
-=collegeapplication.chat.ChatData#readBy(ILjava/lang/String;)V96
-
-readBy97
-Z
-Tcollegeapplication.chat.ChatData#addReadBy(Ljava/util/ArrayList;Ljava/lang/String;)V99
-
-	addReadBy100
-6
-/collegeapplication.chat.ChatData#getNewSr_no()I102
-
-getNewSr_no103
-F
-?collegeapplication.chat.ChatData#getUndreadMessageCountAdmin()I105
-"
-getUndreadMessageCountAdmin106
-l
-ecollegeapplication.chat.ChatData#getUndreadMessageCountStudent(Lcollegeapplication/student/Student;)I108
-$
-getUndreadMessageCountStudent109
-)
-"collegeapplication.student.Student111
-'
- collegeapplication.cource.Cource113
-I
-Bcollegeapplication.cource.Cource#getCourceCode()Ljava/lang/String;115
-+
-$collegeapplication.cource.CourceData117
-^
-Wcollegeapplication.cource.CourceData#getsemoryear(Ljava/lang/String;)Ljava/lang/String;119
-7
-0collegeapplication.cource.Cource#getSemorYear()I121
-G
-@collegeapplication.student.Student#getUserId()Ljava/lang/String;123
-l
-ecollegeapplication.chat.ChatData#getUndreadMessageCountFaculty(Lcollegeapplication/faculty/Faculty;)I125
-$
-getUndreadMessageCountFaculty126
-)
-"collegeapplication.faculty.Faculty128
-9
-2collegeapplication.faculty.Faculty#getFacultyId()I130
-
-
-NewMessage131
-
-message132
-
-messagetime133
-
-total134
-
-getCurrentDate135J
-
-1
-12
-
-
-3
-4Z
-
-5	
-576j†
-
-36
-363722
-E
-86?
-868730 *
-1ö ö(275:5B
-
-
-11
-12
-
-13
-135
-
-112
-11211322
-
-38
-383922
-
-57
-575822
-
-63
-636422
-
-118
-11811922
-
-46
-464722
-
-122
-12212322
-
-127
-12712822
-
-32
-323322
-
-61
-616222
-D
-98>
-989930 *
-1ï ï(28:5B
-
-
-11
-12
-
-13
-100
-G
-107@
-10710830 *
-1÷ ÷(28:5B
-
-
-11
-12
-
-13
-109
-
-120
-12012122
-
-129
-12913022
-E
-84?
-848517 *
-1ò ò(275:5B
-
-
-11
-18
-
-13
-133
-G
-104@
-10410530 *
-1Ω Ω(28:5B
-
-
-11
-12
-
-13
-106
-
-116
-11611722
-A
-69;
-697030 *
-1U U(28:5B
-
-
-11
-12
-
-
-13
-71
-
-65
-656622
-E
-82?
-828317 *
-1ó ó(275:5B
-
-
-11
-18
-
-13
-132
-
-110
-11011122
-A
-15;
-151617 *
-1 (28:5B
-
-
-11
-18
-
-
-13
-19
-G
-101@
-10110230 *
-1© ©(28:5B
-
-
-11
-12
-
-13
-103
-
-20
-202122
-C
-90=
-909130 *
-1∑ ∑(28:5B
-
-
-11
-12
-
-
-13
-92
-C
-95=
-959630 *
-1Ü Ü(28:5B
-
-
-11
-12
-
-
-13
-97
-E
-80?
-808117 *
-1ô ô(275:5B
-
-
-11
-18
-
-13
-134
-
-44
-444522
-
-59
-596022
-C
-78=
-787930 *
-1Ù Ù(28:5B
-
-
-11
-12
-
-
-13
-94
-A
-75;
-757610 *
-1î î(:5B
-
-
-11
-18
-
-13
-131
-
-24
-242522
-
-42
-424322
-
-55
-555622
-;
-86
-8910 *
-1 (:5B
-
-
-11
-12
-
-
-13
-14
-
-48
-484922
-A
-50;
-505130 *
-15 5(28:5B
-
-
-11
-12
-
-
-13
-52
-A
-28;
-282930 *
-1 (28:5B
-
-
-11
-12
-
-
-13
-31
-
-40
-404122
-
-114
-11411522
-
-53
-535422
-
-67
-676822
-G
-124@
-12412530 *
-1Ò Ò(28:5B
-
-
-11
-12
-
-13
-126
-A
-72;
-727330 *
-1~ ~(28:5B
-
-
-11
-12
-
-
-13
-74
-C
-88=
-888930 *
-1« «(28:5B
-
-
-11
-12
-
-
-13
-93rÅ(
-
-152023*
-1 (#
-
-152426*
-1$ (1
-
-152027*
-1 (#
-
-283234*
-1 (!
-
-283235*
-1" (#
-
-283227*
-1 (!
-
-281523*
-1" "(
-
-281523*
-1" "(
-
-283223*
-1# #(
-
-283626*
-1# #(
-
-283223*
-1$ $(
-
-283826*
-1$ $(#
-
-283223*
-1% %(
-
-284026*
-1% %(%
-
-283223*
-1& &(
-
-284226*
-1& &(!
-
-283223*
-1' '(
-
-284426*
-1' '( 
-
-283223*
-1( ((
-
-284626*
-1( (($
-
-283223*
-1) )(
-
-284826*
-1) )($
-
-503227*
-15 5(
-
-503227*
-17 7(
-
-503227*
-17+ 7(3
-
-501523*
-1< <(
-
-501523*
-1< <(
-
-503235*
-1@ @(
-
-503227*
-1@ @(
-
-503226*
-1@ @(
-
-503223*
-1A A(	
-
-505326*
-1A
- A(
-
-503223*
-1B B(	
-
-505526*
-1B
- B(
-
-503223*
-1C C(	
-
-505726*
-1C
- C(
-
-503223*
-1D D(	
-
-505926*
-1D
- D(
-
-503223*
-1E E(	
-
-506126*
-1E
- E(
-
-503223*
-1F F(	
-
-506326*
-1F
- F(
-
-503223*
-1G G(	
-
-506526*
-1G
- G(
-
-503223*
-1H H(	
-
-506726*
-1H
- H(
-
-693234*
-1U- U(5
-
-693227*
-1U U(
-
-693235*
-1U6 U(7
-
-693227*
-1U- U(5
-
-693227*
-1W W(
-
-693227*
-1W+ W(3
-
-693223*
-1\ \(
-
-694226*
-1\	 \(
-
-693223*
-1^1 ^(2
-
-694226*
-1^3 ^(>
-
-693223*
-1c2 c(3
-
-694226*
-1c4 c(?
-
-693223*
-1cW c(X
-
-693826*
-1cY c(f
-
-693223*
-1c c(Ä
-
-694226*
-1cÅ c(å
-
-693223*
-1c¢ c(£
-
-693826*
-1c§ c(±
-
-691523*
-1e e(
-
-691523*
-1e e(
-
-693235*
-1i i(
-
-693227*
-1i i(
-
-693226*
-1i i(
-
-693223*
-1j j(	
-
-695326*
-1j
- j(
-
-693223*
-1k k(	
-
-695526*
-1k
- k(
-
-693223*
-1l l(	
-
-695726*
-1l
- l(
-
-693223*
-1m m(	
-
-695926*
-1m
- m(
-
-693223*
-1n n(	
-
-696126*
-1n
- n(
-
-693223*
-1o o(	
-
-696326*
-1o
- o(
-
-693223*
-1p p(	
-
-696526*
-1p
- p(
-
-693223*
-1q q(	
-
-696726*
-1q
- q(
-
-727577*
-1~	 ~(
-
-727527*
-1~	 ~(
-
-727535*
-1Ä Ä(
-
-727527*
-1Ä Ä(
-
-727526*
-1Ä Ä('
-
-721523*
-1è è(
-
-721523*
-1è è(
-
-72823*
-1î î(
-
-727826*
-1î î(
-
-728023*
-1ó ó(
-
-728223*
-1õ õ(
-
-728223*
-1ü ü(
-
-728423*
-1° °(
-
-728423*
-1¢ ¢(
-
-727523*
-1¢' ¢(1
-
-728626*
-1¢2 ¢(@
-
-727527*
-1¢' ¢(1
-
-728423*
-1§ §(
-
-728223*
-1± ±(
-
-727577*
-1≥ ≥(
-
-72823*
-1≥ ≥(
-
-728826*
-1≥ ≥(
-
-901523*
-1º º(
-
-901523*
-1º º(
-
-887577*
-1«	 «(
-
-887527*
-1«	 «(
-
-887535*
-1… …(
-
-887527*
-1… …(
-
-887526*
-1… …('
-
-888223*
-1   (
-
-881523*
-1◊ ◊(
-
-881523*
-1◊ ◊(
-
-888223*
-1ﬁ ﬁ(
-
-888223*
-1‚ ‚(
-
-888423*
-1‰ ‰(
-
-888423*
-1Â Â(
-
-887523*
-1Â& Â(0
-
-888626*
-1Â1 Â(?
-
-887527*
-1Â& Â(0
-
-888423*
-1Á Á(
-
-951523*
-1ã ã(
-
-951523*
-1ã ã(
-
-981523*
-1ü ü(
-
-981523*
-1ü ü(
-
-1011523*
-1Æ Æ(
-
-1011523*
-1Æ Æ(
-
-1041523*
-1√ √(
-
-1041523*
-1√ √(
-
-104823*
-1» »(
-
-1047826*
-1» »(
-
-10711034*
-1÷+ ÷(2
-
-10711035*
-1÷3 ÷(4
-
-10711027*
-1÷+ ÷(2
-
-10711223*
-1Ÿ Ÿ(
-
-10711426*
-1Ÿ Ÿ( 
-
-10711623*
-1Ÿ' Ÿ(*
-
-10711826*
-1Ÿ8 Ÿ(D
-
-10711626*
-1Ÿ+ Ÿ(5
-
-10711223*
-1ŸE Ÿ(F
-
-10711426*
-1ŸG Ÿ(T
-
-10711223*
-1Ÿ\ Ÿ(]
-
-10712026*
-1Ÿ^ Ÿ(j
-
-10711023*
-1‹ì ‹(î
-
-10712226*
-1‹ï ‹(û
-
-10711023*
-1‹¥ ‹(µ
-
-10712226*
-1‹∂ ‹(ø
-
-1071523*
-1› ›(
-
-1071523*
-1› ›(
-
-107823*
-1„ „(
-
-1077826*
-1„ „(
-
-10711023*
-1„) „(*
-
-10712226*
-1„+ „(4
-
-12412734*
-1Ò+ Ò(2
-
-12412735*
-1Ò3 Ò(4
-
-12412727*
-1Ò+ Ò(2
-
-12411223*
-1Ù Ù(
-
-12411426*
-1Ù Ù( 
-
-12411623*
-1Ù' Ù(*
-
-12411826*
-1Ù8 Ù(D
-
-12411626*
-1Ù+ Ù(5
-
-12411223*
-1ÙE Ù(F
-
-12411426*
-1ÙG Ù(T
-
-12411223*
-1Ù\ Ù(]
-
-12412026*
-1Ù^ Ù(j
-
-12412723*
-1˜î ˜(ï
-
-12412926*
-1˜ñ ˜(¢
-
-12412723*
-1˜∏ ˜(π
-
-12412926*
-1˜∫ ˜(∆
-
-1241523*
-1¯ ¯(
-
-1241523*
-1¯ ¯(
-
-124823*
-1˝ ˝(
-
-1247826*
-1˝ ˝(
-
-12412723*
-1˝) ˝(*
-
-12412926*
-1˝+ ˝(7

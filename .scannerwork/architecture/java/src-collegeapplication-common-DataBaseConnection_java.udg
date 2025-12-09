@@ -1,209 +1,0 @@
-
-1.0dan90009_QualityJavaFrontend"1765265861013*java2.B‹
-:
-5src/collegeapplication/common/DataBaseConnection.java2
-	
-type3
-	
-MAIN4
-
-package6
-
-collegeapplication.common7
-1
-,collegeapplication.common.DataBaseConnection9
-
-class10
-
-access11
-
-public12
-
-simple-name13
-
-DataBaseConnection14
-6
-0collegeapplication.common.DataBaseConnection.con16
-
-field17
-
-	protected18
-	
-con19
-6
-0collegeapplication.common.DataBaseConnection.url21
-	
-url22
-8
-2collegeapplication.common.DataBaseConnection.uname24
-
-uname25
-;
-5collegeapplication.common.DataBaseConnection.password27
-
-password28
-W
-Qcollegeapplication.common.DataBaseConnection#getConnection()Ljava/sql/Connection;30
-
-method31
-
-getConnection32
-
-
-references33
-E
-?collegeapplication.common.DataBaseConnection#checkconnection()Z35
-
-checkconnection36
-E
-?collegeapplication.common.DataBaseConnection#closeConnection()V38
-
-closeConnection39J
-
-1
-12
-
-
-3
-4Z
-
-5	
-576j’
-;
-86
-8910 *
-1 ( :5B
-
-
-11
-12
-
-
-13
-14
-A
-34;
-343531 *
-1* *(28:5B
-
-
-11
-12
-
-
-13
-36
-A
-23;
-232417 *
-1 (28:5B
-
-
-11
-18
-
-
-13
-25
-A
-20;
-202117 *
-1 (28:5B
-
-
-11
-18
-
-
-13
-22
-A
-37;
-373831 *
-1: :(28:5B
-
-
-11
-12
-
-
-13
-39
-A
-29;
-293031 *
-1 (28:5B
-
-
-11
-12
-
-
-13
-32
-A
-26;
-262717 *
-1 (28:5B
-
-
-11
-18
-
-
-13
-28
-A
-15;
-151617 *
-1 (28:5B
-
-
-11
-18
-
-
-13
-19rú
-
-291533*
-1 (	
-
-291533*
-1 (
-
-291533*
-1   (
-
-292033*
-1 %  ((
-
-292333*
-1 )  (.
-
-292633*
-1 /  (7
-
-291533*
-1! !(
-
-291533*
-1& &(
-
-341533*
-11 1(
-
-342033*
-11$ 1('
-
-342333*
-11( 1(-
-
-342633*
-11. 1(6
-
-371533*
-1= =(
-
-371533*
-1= =(
