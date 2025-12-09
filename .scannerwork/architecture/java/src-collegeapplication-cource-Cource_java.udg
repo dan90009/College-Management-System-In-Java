@@ -1,0 +1,334 @@
+
+1.0dan90009_QualityJavaFrontend"1765265870032*java2.B›
+.
+)src/collegeapplication/cource/Cource.java2
+	
+type3
+	
+MAIN4
+
+package6
+
+collegeapplication.cource7
+%
+ collegeapplication.cource.Cource9
+
+class10
+
+access11
+
+public12
+
+simple-name13
+
+Cource14
+1
++collegeapplication.cource.Cource.courcecode16
+
+field17
+
+private18
+
+
+courcecode19
+0
+*collegeapplication.cource.Cource.semoryear21
+
+	semoryear22
+1
++collegeapplication.cource.Cource.isdeclared24
+
+
+isdeclared25
+1
++collegeapplication.cource.Cource.courcename27
+
+
+courcename28
+I
+Ccollegeapplication.cource.Cource#setCourceName(Ljava/lang/String;)V30
+
+method31
+
+setCourceName32
+
+
+uses33
+
+
+references34
+I
+Ccollegeapplication.cource.Cource#setCourceCode(Ljava/lang/String;)V36
+
+setCourceCode37
+7
+1collegeapplication.cource.Cource#setSemorYear(I)V39
+
+setSemorYear40
+8
+2collegeapplication.cource.Cource#setIsDeclared(Z)V42
+
+setIsDeclared43
+H
+Bcollegeapplication.cource.Cource#getCourceName()Ljava/lang/String;45
+
+getCourceName46
+*
+$collegeapplication.cource.CourceData48
+
+unknown49
+^
+Xcollegeapplication.cource.CourceData#getcourcename(Ljava/lang/String;)Ljava/lang/String;51
+
+calls52
+H
+Bcollegeapplication.cource.Cource#getCourceCode()Ljava/lang/String;54
+
+getCourceCode55
+6
+0collegeapplication.cource.Cource#getSemorYear()I57
+
+getSemorYear58
+7
+1collegeapplication.cource.Cource#getIsDeclared()Z60
+
+getIsDeclared61J
+
+1
+12
+
+
+3
+4Z
+
+5	
+576j‰
+A
+23;
+232417 *
+1 (	28:5B
+
+
+11
+18
+
+
+13
+25
+
+50
+505149
+;
+86
+8910 *
+1 (:5B
+
+
+11
+12
+
+
+13
+14
+A
+29;
+293031 *
+1	 	(28:5B
+
+
+11
+12
+
+
+13
+32
+A
+59;
+596031 *
+1% %(28:5B
+
+
+11
+12
+
+
+13
+61
+A
+44;
+444531 *
+1 (28:5B
+
+
+11
+12
+
+
+13
+46
+A
+56;
+565731 *
+1! !(28:5B
+
+
+11
+12
+
+
+13
+58
+A
+41;
+414231 *
+1 (28:5B
+
+
+11
+12
+
+
+13
+43
+A
+35;
+353631 *
+1 (28:5B
+
+
+11
+12
+
+
+13
+37
+
+47
+474849
+A
+53;
+535431 *
+1 (28:5B
+
+
+11
+12
+
+
+13
+55
+A
+38;
+383931 *
+1 (28:5B
+
+
+11
+12
+
+
+13
+40
+A
+20;
+202117 *
+1 (	28:5B
+
+
+11
+18
+
+
+13
+22
+A
+26;
+262717 *
+1 (	28:5B
+
+
+11
+18
+
+
+13
+28
+A
+15;
+151617 *
+1 (	28:5B
+
+
+11
+18
+
+
+13
+19r¯
+
+29833*
+1 (
+
+29834*
+1 (
+
+292634*
+1 (
+
+35833*
+1 (
+
+35834*
+1 (
+
+351534*
+1 (
+
+38833*
+1 (
+
+38834*
+1 (
+
+382034*
+1 (
+
+41833*
+1 (
+
+41834*
+1 (
+
+412334*
+1 (
+
+442634*
+1
+ (
+
+442634*
+1 (%
+
+444734*
+1& ()
+
+445052*
+17 (D
+
+444752*
+1* (4
+
+441534*
+1E (O
+
+531534*
+1
+ (
+
+562034*
+1#
+ #(
+
+592334*
+1'
+ '(

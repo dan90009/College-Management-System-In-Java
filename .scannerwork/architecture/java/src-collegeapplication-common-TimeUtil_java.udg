@@ -1,0 +1,176 @@
+
+1.0dan90009_QualityJavaFrontend"1765265866118*java2.B£
+0
++src/collegeapplication/common/TimeUtil.java2
+	
+type3
+	
+MAIN4
+
+package6
+
+collegeapplication.common7
+'
+"collegeapplication.common.TimeUtil9
+
+class10
+
+access11
+
+public12
+
+simple-name13
+
+TimeUtil14
+1
++collegeapplication.common.TimeUtil.formater16
+
+field17
+
+	protected18
+
+formater19
+K
+Ecollegeapplication.common.TimeUtil#getCurrentTime()Ljava/lang/String;21
+
+method22
+
+getCurrentTime23
+
+
+references24
+`
+Zcollegeapplication.common.TimeUtil#getDayDifference(Ljava/lang/String;Ljava/lang/String;)I26
+
+getDayDifference27
+a
+[collegeapplication.common.TimeUtil#getTimeDifference(Ljava/lang/String;Ljava/lang/String;)J29
+
+getTimeDifference30
+C
+=collegeapplication.common.TimeUtil#main([Ljava/lang/String;)V32
+
+
+main33
+
+calls34J
+
+1
+12
+
+
+3
+4Z
+
+5	
+576jå
+A
+15;
+151617 *
+1 (28:5B
+
+
+11
+18
+
+
+13
+19
+A
+20;
+202122 *
+1 (28:5B
+
+
+11
+12
+
+
+13
+23
+A
+28;
+282922 *
+1; ;(28:5B
+
+
+11
+12
+
+
+13
+30
+A
+31;
+313222 *
+1Q Q(28:5B
+
+
+11
+12
+
+
+13
+33
+A
+25;
+252622 *
+1 (28:5B
+
+
+11
+12
+
+
+13
+27
+;
+86
+8910 *
+1 (:5B
+
+
+11
+12
+
+
+13
+14r¡
+
+201524*
+1
+ (
+
+201524*
+1
+ (
+
+281524*
+1? ?(
+
+281524*
+1? ?(
+
+281524*
+1F F(
+
+281524*
+1F F(
+
+31824*
+1S S('
+
+312834*
+1S S('
+
+31824*
+1S( S(6
+
+312034*
+1S( S(6
+
+31824*
+1S9 S(G
+
+312034*
+1S9 S(G
