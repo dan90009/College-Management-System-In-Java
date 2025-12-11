@@ -1,5 +1,7 @@
 package collegeapplication.student;
 
+package collegeapplication.student;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -48,7 +50,6 @@ import collegeapplication.subject.AssignSubjectPanel;
 import collegeapplication.subject.SubjectPanel;
 
 /*
- * Duplicated blocks = 15
  * Title : StudentMain.java
  * Created by : Ajaysinh Rathod
  * Purpose : Student Main Frame
@@ -138,35 +139,14 @@ public class StudentMain extends JFrame implements ActionListener {
 	 */
 	public StudentMain(Student s) {
 
-		ActionListener setActive = new ActionListener() {
+		this.s = s;
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				int result = new StudentData().setActiveStatus(s.getActiveStatus(), s.getUserId());
-				if (result == 0) {
-					timer.stop();
-					JOptionPane.showMessageDialog(null, "Your account is deleted by Admin", "Account deleted",
-							JOptionPane.ERROR_MESSAGE);
-					System.exit(0);
-				} else {
-					int notification = new NotificationData().getUnreadNotification(s.getUserId(), "Student",
-							s.getCourceCode(), s.getSemorYear(), s.getAdmissionDate());
-					updateBadgeLabel(totalnewnotification, notification, 24, false);
-
-					int chat = new ChatData().getUndreadMessageCountStudent(s);
-					updateBadgeLabel(totalnewchatmessage, chat, 26, true);
-				}
-			}
-
-		};
 		try {
 			messagecount = ImageIO.read(new File("./assets/messagecount.png"));
 		} catch (IOException exp) {
 			exp.printStackTrace();
 		}
-		timer = new Timer(1000, setActive);
-		timer.start();
-		this.s = s;
+
 		Color bgColor = new Color(32, 178, 170);
 		Color frColor = Color.white;
 		UIManager.put("ComboBoxUI", "com.sun.java.swing.plaf.windows.WindowsComboBoxUI");
@@ -189,6 +169,7 @@ public class StudentMain extends JFrame implements ActionListener {
 
 		this.setBounds(-2, 0, 1370, 733);
 		createpanel();
+
 		JPanel sidebarpanel = new JPanel();
 		sidebarpanel.setBorder(new MatteBorder(0, 0, 0, 2, (Color) new Color(64, 64, 64)));
 		sidebarpanel.setBackground(Color.DARK_GRAY);
@@ -246,10 +227,8 @@ public class StudentMain extends JFrame implements ActionListener {
 		chatbutton = createButton("Chat");
 		chatbutton.setLayout(new BorderLayout());
 		sidebarpanel.add(chatbutton);
-		int chat = new ChatData().getUndreadMessageCountStudent(s);
 		totalnewchatmessage = createBadgeLabel();
 		chatbutton.add(totalnewchatmessage, BorderLayout.LINE_END);
-		updateBadgeLabel(totalnewchatmessage, chat, 26, true);
 
 		searchbutton = createButton("Search");
 		sidebarpanel.add(searchbutton);
@@ -257,12 +236,8 @@ public class StudentMain extends JFrame implements ActionListener {
 		notificationbutton = createButton("Notification");
 		notificationbutton.setLayout(new BorderLayout());
 		sidebarpanel.add(notificationbutton);
-
-		int notification = new NotificationData().getUnreadNotification(s.getUserId(), "Student", s.getCourceCode(),
-				s.getSemorYear(), s.getAdmissionDate());
 		totalnewnotification = createBadgeLabel();
 		notificationbutton.add(totalnewnotification, BorderLayout.LINE_END);
-		updateBadgeLabel(totalnewnotification, notification, 26, false);
 
 		myprofilebutton = createButton("My Profile", "Profile");
 		sidebarpanel.add(myprofilebutton);
@@ -277,7 +252,6 @@ public class StudentMain extends JFrame implements ActionListener {
 		sidebarpanel.add(exitbutton);
 
 		activeButton(homebutton);
-
 		homepanel.setVisible(true);
 
 		this.setCollageDetails();
@@ -287,6 +261,14 @@ public class StudentMain extends JFrame implements ActionListener {
 		s.setLastLogin(TimeUtil.getCurrentTime());
 		s.setActiveStatus(true);
 		new StudentData().updateStudentData(s, s);
+
+		// initial active-status + badges update
+		updateActiveStatusAndBadges();
+
+		// timer to keep student active and refresh badges
+		timer = new Timer(1000, e -> updateActiveStatusAndBadges());
+		timer.start();
+
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(final WindowEvent windowenent) {
@@ -426,6 +408,31 @@ public class StudentMain extends JFrame implements ActionListener {
 		}
 	}
 
+	// ==== helper: refresh active status + badges (used by timer & initial call) ====
+	private void updateActiveStatusAndBadges() {
+		// make sure labels exist
+		if (totalnewnotification == null || totalnewchatmessage == null) {
+			return;
+		}
+
+		int result = new StudentData().setActiveStatus(s.getActiveStatus(), s.getUserId());
+		if (result == 0) {
+			if (timer != null) {
+				timer.stop();
+			}
+			JOptionPane.showMessageDialog(null, "Your account is deleted by Admin", "Account deleted",
+					JOptionPane.ERROR_MESSAGE);
+			System.exit(0);
+		} else {
+			int notification = new NotificationData().getUnreadNotification(s.getUserId(), "Student",
+					s.getCourceCode(), s.getSemorYear(), s.getAdmissionDate());
+			updateBadgeLabel(totalnewnotification, notification, 26, false);
+
+			int chat = new ChatData().getUndreadMessageCountStudent(s);
+			updateBadgeLabel(totalnewchatmessage, chat, 26, true);
+		}
+	}
+
 	// ==== helper: show standard main panel at (panelx, panely) ====
 	private void showMainPanel(JPanel panel) {
 		panel.setLocation(panelx, panely);
@@ -471,7 +478,9 @@ public class StudentMain extends JFrame implements ActionListener {
 	// ==== helper: deactivate current student and stop timer ====
 	private void deactivateCurrentStudent() {
 		s.setActiveStatus(false);
-		timer.stop();
+		if (timer != null) {
+			timer.stop();
+		}
 		new StudentData().setActiveStatus(false, s.getUserId());
 	}
 

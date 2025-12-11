@@ -36,16 +36,16 @@ import collegeapplication.faculty.FacultyMain;
 import collegeapplication.subject.SubjectData;
 
 /*
- * was Duplicated Blocks 22 (now reduced further) - 17 blocks
+ * was Duplicated Blocks 22 (now refactored further)
  * Title : AttandanceReportPanel.java
  * Created by : Ajaysinh Rathod
  * Purpose : For displaying student attandance according to class/subject/student wice
  * Mail : ajaysinhrathod1290@gmail.com
  */
 
+@SuppressWarnings("serial")
 public class AttandanceReportPanel extends JPanel implements ActionListener {
 
-	private static final long serialVersionUID = 1L;
 	private JComboBox<String> courcenamecombo;
 	private JComboBox<String> semoryearcombo;
 	private JComboBox<String> subjectorrollcombo;
@@ -68,6 +68,8 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 	public Dimension getPreferredSize() {
 		return new Dimension(1096, scrollPane.getY() + scrollPane.getHeight() + 40);
 	}
+
+	// ================== BASE CONSTRUCTOR (UI SETUP) ==================
 
 	private AttandanceReportPanel() {
 		setBorder(null);
@@ -227,6 +229,8 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 		add(nodatafoundlabel);
 	}
 
+	// ================== BUTTON STATE HELPERS ==================
+
 	public void enableButton(JButton button) {
 		button.setBorder(new LineBorder(new Color(255, 255, 255)));
 		button.setForeground(new Color(0, 139, 139));
@@ -243,7 +247,7 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 		button.setName("Deactive");
 	}
 
-	// ==== New helper: centralize active-mode button state ====
+	// Centralize active-mode button state
 	private void setActiveModeButton(JButton activeButton) {
 		if (activeButton == subjectwicebutton) {
 			enableButton(subjectwicebutton);
@@ -260,7 +264,7 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 		}
 	}
 
-	// ==== New helper: show/hide subject/roll controls & set label text ====
+	// Show/hide subject/roll controls & set label text
 	private void configureSubjectOrRollControls(boolean visible, String labelText) {
 		subjectorrollcombo.setVisible(visible);
 		label3.setVisible(visible);
@@ -268,6 +272,52 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 			label3.setText(labelText);
 		}
 	}
+
+	// ================== MODE CONFIG HELPERS (shared) ==================
+
+	// Common layout for subject-wise mode (Admin + Faculty)
+	private void configureSubjectModeBase(String labelText) {
+		setActiveModeButton(subjectwicebutton);
+		configureSubjectOrRollControls(true, labelText);
+		fetchdetailsbutton.setVisible(true);
+		subjectorrollcombo.setLocation(courcenamecombo.getLocation());
+		fetchdetailsbutton.setLocation(fetchdetailsbutton.getX(), semoryearcombo.getY());
+		scrollPane.setLocation(scrollPane.getX(), fetchdetailsbutton.getY() + 50);
+		scrollPane.setVisible(false);
+	}
+
+	// Common layout for student-wise mode (Admin + Faculty)
+	private void configureStudentModeBase(String labelText) {
+		setActiveModeButton(studentwicebutton);
+		configureSubjectOrRollControls(true, labelText);
+		fetchdetailsbutton.setVisible(true);
+		subjectorrollcombo.setLocation(courcenamecombo.getLocation());
+		fetchdetailsbutton.setLocation(fetchdetailsbutton.getX(), semoryearcombo.getY());
+		scrollPane.setLocation(scrollPane.getX(), fetchdetailsbutton.getY() + 50);
+		scrollPane.setVisible(false);
+	}
+
+	// Common layout for class-wise mode (Admin + Faculty)
+	private void configureClassModeBase() {
+		setActiveModeButton(classwicebutton);
+		configureSubjectOrRollControls(false, null);
+	}
+
+	// Reset filters when mode changes
+	private void resetFiltersForModeChange() {
+		subjectorrollcombo.setModel(new DefaultComboBoxModel<String>(new String[] { "" }));
+		courcenamecombo.setSelectedIndex(0);
+		semoryearcombo.setModel(new DefaultComboBoxModel<String>(new String[] { "" }));
+		scrollPane.setVisible(false);
+	}
+
+	// Position fetch & scroll below subject/roll combo (Admin mode layout)
+	private void positionFetchAndScrollBelowSubjectCombo() {
+		fetchdetailsbutton.setLocation(fetchdetailsbutton.getX(), subjectorrollcombo.getY() + 65);
+		scrollPane.setLocation(scrollPane.getX(), fetchdetailsbutton.getY() + 60);
+	}
+
+	// ================== ACTION LISTENER (COMBO + FETCH) ==================
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -307,7 +357,7 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 		if (e.getSource() == fetchdetailsbutton) {
 			if (courcenamecombo.getSelectedIndex() == 0) {
 				showerror(courcenamecombo);
-			} else if (semoryearcombo.getSelectedIndex() == 0) {
+			} else if (semoryearcombo.getSelectedIndex() == 0 && semoryearcombo.isVisible()) {
 				showerror(semoryearcombo);
 			} else if (subjectorrollcombo.isVisible()
 					&& subjectorrollcombo.getSelectedItem().equals("No Subject Found")) {
@@ -329,21 +379,6 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 		Errorlabel.setBounds(tf.getX(), tf.getY() + tf.getHeight() - 5, 400, 26);
 	}
 
-	// ==== Extracted helper for resetting filters when mode changes (admin) ====
-	private void resetFiltersForModeChange() {
-		subjectorrollcombo.setModel(new DefaultComboBoxModel<String>(new String[] { "" }));
-		courcenamecombo.setSelectedIndex(0);
-		semoryearcombo.setModel(new DefaultComboBoxModel<String>(new String[] { "" }));
-		scrollPane.setVisible(false);
-	}
-
-	// ==== Extracted helper for positioning fetch & scroll below subject/roll combo
-	// (admin) ====
-	private void positionFetchAndScrollBelowSubjectCombo() {
-		fetchdetailsbutton.setLocation(fetchdetailsbutton.getX(), subjectorrollcombo.getY() + 65);
-		scrollPane.setLocation(scrollPane.getX(), fetchdetailsbutton.getY() + 60);
-	}
-
 	// ==== Extracted helper to build Student from selected table row ====
 	private Student getSelectedStudentFromTable() {
 		int row = table.getSelectedRow();
@@ -359,62 +394,72 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 		return new StudentData().getStudentDetails(courcecode, sem, rollnumber);
 	}
 
+	// === Shared helper to show ViewStudentPanel for Admin/Faculty ===
+	private void openStudentPanel(ViewStudentPanel panel, int panelx, JScrollPane parentScroll, JPanel parentContent) {
+		panel.setVisible(true);
+		parentScroll.setVisible(false);
+		panel.setLocation(panelx, 0);
+		panel.setVisible(true);
+		panel.setFocusable(true);
+		parentContent.add(panel);
+	}
+
 	// ================== ADMIN CONSTRUCTOR ==================
 
 	public AttandanceReportPanel(AdminMain am) {
 		this();
+
+		// double-click handling
 		table.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				if (e.getClickCount() > 1 && e.getButton() == MouseEvent.BUTTON1) {
 					Student s = getSelectedStudentFromTable();
 					if (s != null) {
 						am.viewstudentpanel = new ViewStudentPanel(s, am, am.attandancereportpanelscroll);
-						am.viewstudentpanel.setVisible(true);
-						am.attandancereportpanelscroll.setVisible(false);
-						am.viewstudentpanel.setLocation(am.panelx, 0);
-						am.viewstudentpanel.setVisible(true);
-						am.viewstudentpanel.setFocusable(true);
-						am.contentPane.add(am.viewstudentpanel);
+						openStudentPanel(am.viewstudentpanel, am.panelx, am.attandancereportpanelscroll, am.contentPane);
 					}
 				}
 			}
 		});
 
+		// Subject-wise
 		subjectwicebutton.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				setActiveModeButton(subjectwicebutton);
-				configureSubjectOrRollControls(true, "Select Subject :");
-				positionFetchAndScrollBelowSubjectCombo();
+				configureSubjectModeBase("Select Subject :");
+				// Admin-specific reset
+				label2.setVisible(true);
+				courcenamecombo.setVisible(true);
+				semoryearcombo.setVisible(true);
 				resetFiltersForModeChange();
 			}
-
 		});
+
+		// Student-wise
 		studentwicebutton.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				setActiveModeButton(studentwicebutton);
-				configureSubjectOrRollControls(true, "Select Roll Number :");
-				positionFetchAndScrollBelowSubjectCombo();
+				configureStudentModeBase("Select Roll Number :");
+				label2.setVisible(true);
+				courcenamecombo.setVisible(true);
+				semoryearcombo.setVisible(true);
 				resetFiltersForModeChange();
 			}
-
 		});
-		classwicebutton.addActionListener(new ActionListener() {
 
+		// Class-wise
+		classwicebutton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				setActiveModeButton(classwicebutton);
-				configureSubjectOrRollControls(false, null);
+				configureClassModeBase();
+				label2.setVisible(true);
+				courcenamecombo.setVisible(true);
+				semoryearcombo.setVisible(true);
 				fetchdetailsbutton.setLocation(fetchdetailsbutton.getX(), subjectorrollcombo.getY());
 				scrollPane.setLocation(scrollPane.getX(), fetchdetailsbutton.getY() + 60);
 				resetFiltersForModeChange();
 			}
-
 		});
-
 	}
 
 	// ================== FACULTY CONSTRUCTOR ==================
@@ -422,6 +467,7 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 	public AttandanceReportPanel(FacultyMain fm) {
 		this();
 
+		// pre-select faculty course/sem/subject
 		courcenamecombo.setSelectedItem(new CourceData().getcourcename(fm.f.getCourceCode()));
 		semoryearcombo.setModel(
 				new DefaultComboBoxModel<String>(new CourceData().getSemorYear(courcenamecombo.getSelectedItem() + "")));
@@ -438,70 +484,51 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 		this.fetchdetailsbutton.setLocation(fetchdetailsbutton.getX(), semoryearcombo.getY());
 		scrollPane.setLocation(scrollPane.getX(), fetchdetailsbutton.getY() + 50);
 
+		// double-click handling
 		table.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				if (e.getClickCount() > 1 && e.getButton() == MouseEvent.BUTTON1) {
 					Student s = getSelectedStudentFromTable();
 					if (s != null) {
 						fm.viewstudentpanel = new ViewStudentPanel(s, fm, fm.attandancereportpanelscroll);
-						fm.viewstudentpanel.setVisible(true);
-						fm.attandancereportpanelscroll.setVisible(false);
-						fm.viewstudentpanel.setLocation(fm.panelx, 0);
-						fm.viewstudentpanel.setVisible(true);
-						fm.viewstudentpanel.setFocusable(true);
-						fm.contentPane.add(fm.viewstudentpanel);
+						openStudentPanel(fm.viewstudentpanel, fm.panelx, fm.attandancereportpanelscroll, fm.contentPane);
 					}
 				}
 			}
 		});
 
+		// Student-wise (faculty)
 		studentwicebutton.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				setActiveModeButton(studentwicebutton);
-				configureSubjectOrRollControls(true, "Select Roll Number :");
-				fetchdetailsbutton.setVisible(true);
-				subjectorrollcombo.setLocation(courcenamecombo.getLocation());
-				fetchdetailsbutton.setLocation(fetchdetailsbutton.getX(), semoryearcombo.getY());
-				scrollPane.setLocation(scrollPane.getX(), fetchdetailsbutton.getY() + 50);
+				configureStudentModeBase("Select Roll Number :");
 				subjectorrollcombo.setModel(new DefaultComboBoxModel<String>(
 						new StudentData().getRollNumber(fm.f.getCourceCode(), semoryearcombo.getSelectedIndex())));
 				scrollPane.setVisible(false);
-
 			}
-
 		});
-		subjectwicebutton.addActionListener(new ActionListener() {
 
+		// Subject-wise (faculty)
+		subjectwicebutton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				setActiveModeButton(subjectwicebutton);
-				configureSubjectOrRollControls(true, "Select Subject :");
-				fetchdetailsbutton.setVisible(true);
-				subjectorrollcombo.setLocation(courcenamecombo.getLocation());
-				fetchdetailsbutton.setLocation(fetchdetailsbutton.getX(), semoryearcombo.getY());
-				scrollPane.setLocation(scrollPane.getX(), fetchdetailsbutton.getY() + 50);
+				configureSubjectModeBase("Select Subject :");
 				String[] totalsub = new SubjectData().getSubjectinCource(fm.f.getCourceCode(), fm.f.getSemorYear());
 				subjectorrollcombo.setModel(new DefaultComboBoxModel<String>(totalsub));
 				scrollPane.setVisible(false);
-
 			}
-
 		});
-		classwicebutton.addActionListener(new ActionListener() {
 
+		// Class-wise (faculty)
+		classwicebutton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				setActiveModeButton(classwicebutton);
-				configureSubjectOrRollControls(false, null);
+				configureClassModeBase();
 				scrollPane.setLocation(scrollPane.getX(), courcenamecombo.getY());
 				fetchdetailsbutton.setVisible(false);
 				createtablemodel();
 			}
-
 		});
-
 	}
 
 	// ================== STUDENT CONSTRUCTORS ==================
@@ -553,15 +580,18 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 
 		this.createtablemodel();
 		table.setEnabled(false);
-		table.setRowSelectionInterval(totalstudent - 1, totalstudent - 1);
+		if (totalstudent > 0) {
+			table.setRowSelectionInterval(totalstudent - 1, totalstudent - 1);
+		}
 		table.getColumnModel().getColumn(0).setCellRenderer(new CellRenderer());
 		table.getColumnModel().getColumn(1).setCellRenderer(new CellRenderer());
 		table.getColumnModel().getColumn(2).setCellRenderer(new CellRenderer());
 		table.getColumnModel().getColumn(3).setCellRenderer(new CellRenderer());
 		table.getColumnModel().getColumn(4).setCellRenderer(new CellRenderer());
 		table.getColumnModel().getColumn(5).setCellRenderer(new CellRenderer());
-
 	}
+
+	// ================== TABLE MODEL & HELPERS ==================
 
 	public void createtablemodel() {
 		nodatafoundlabel.setVisible(false);
@@ -607,10 +637,9 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 				noDataFound();
 			}
 		}
-
 	}
 
-	// ==== Extracted helper: choose correct attendance list based on active mode ====
+	// choose correct attendance list based on active mode
 	private ArrayList<Attandance> getAttendanceReportList(Attandance a) {
 		if (studentwicebutton.getName().equals("Active")) {
 			return new StudentData().getAttandanceReportByStudent(a);
@@ -622,7 +651,7 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 		return new ArrayList<>();
 	}
 
-	// ==== Extracted helper: calculate percentage string with safe division ====
+	// calculate percentage string with safe division
 	private String calculatePercentage(Attandance rowData) {
 		try {
 			return (rowData.getAttandance() * 100) / rowData.getTotalAttandance() + " %";
@@ -631,7 +660,7 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 		}
 	}
 
-	// ==== Extracted helper: add a single attendance row into the model ====
+	// add a single attendance row into the model
 	private void addAttendanceRow(DefaultTableModel model, Attandance reportContext, Attandance rowData,
 								  int rowIndex) {
 		model.addRow(new Object[0]);
@@ -643,7 +672,7 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 		model.setValueAt(calculatePercentage(rowData), rowIndex, 5);
 	}
 
-	// ==== Extracted helper: add total row for student-only view if needed ====
+	// add total row for student-only view if needed
 	private void addTotalRowIfNeeded(DefaultTableModel model, Attandance a) {
 		if (!classwicebutton.isVisible() && !studentwicebutton.isVisible() && !subjectwicebutton.isVisible()) {
 			ArrayList<Attandance> totals = new StudentData().getTotalAttandanceReportOfStudent(a);
@@ -660,7 +689,6 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 	public DefaultTableModel createModel(Attandance a) {
 		String Column[] = { "Roll Number", "Student Name", "Class", "Subject", "Total Attandance", "Percentage" };
 
-		@SuppressWarnings("serial")
 		DefaultTableModel model = new DefaultTableModel(Column, 0) {
 			boolean isEdit[] = { false, false, false, false, false, false };
 
@@ -680,21 +708,20 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 		addTotalRowIfNeeded(model, a);
 
 		return model;
-
 	}
 
 	public void noDataFound() {
 		scrollPane.setVisible(false);
 		nodatafoundlabel.setVisible(true);
 		nodatafoundlabel.setLocation(nodatafoundlabel.getX(), scrollPane.getY() - 100);
-
 	}
 
-	@SuppressWarnings("serial")
+	// ================== CELL RENDERER ==================
+
 	private class CellRenderer extends DefaultTableCellRenderer {
 		@Override
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-													   int row, int column) {
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+													   boolean hasFocus, int row, int column) {
 			super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 			this.setHorizontalAlignment(JLabel.CENTER);
 			if (row == (totalstudent - 1)) {
@@ -702,10 +729,8 @@ public class AttandanceReportPanel extends JPanel implements ActionListener {
 				if (row == 0) {
 					this.setHorizontalAlignment(JLabel.CENTER);
 				}
-
 			}
 			return this;
 		}
 	}
-
 }

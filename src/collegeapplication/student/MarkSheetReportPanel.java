@@ -67,13 +67,9 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 	private JButton submitbutton;
 	private JLabel nodatafoundlabel;
 
-	/**
-	 * Create the panel.
-	 */
 	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension(1096, this.getHeight());
-
 	}
 
 	private MarkSheetReportPanel() {
@@ -132,7 +128,6 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 		subjectwicebutton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		subjectwicebutton.setBackground(new Color(255, 255, 255));
 		subjectwicebutton.setBounds(577, 139, 146, 33);
-
 		panel.add(subjectwicebutton);
 
 		studentwicebutton = new JButton("Student Wice");
@@ -141,7 +136,6 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 		studentwicebutton.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		studentwicebutton.setBackground(Color.WHITE);
 		studentwicebutton.setBounds(742, 139, 146, 33);
-
 		panel.add(studentwicebutton);
 
 		classwicebutton = new JButton("Class Wice");
@@ -150,7 +144,6 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 		classwicebutton.setBackground(Color.WHITE);
 		classwicebutton.setBounds(907, 139, 146, 33);
 		classwicebutton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
 		panel.add(classwicebutton);
 
 		label1 = new JLabel("Cource Name   :");
@@ -188,8 +181,8 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 		semoryearcombo.setBounds(204, 270, 872, 40);
 		semoryearcombo.addActionListener(this);
 		semoryearcombo.setFocusable(false);
-
 		add(semoryearcombo);
+
 		subjectorrollcombo = new JComboBox<String>();
 		subjectorrollcombo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		subjectorrollcombo.setFocusable(false);
@@ -259,7 +252,6 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 		nodatafoundlabel = new JLabel("");
 		nodatafoundlabel.setHorizontalAlignment(SwingConstants.CENTER);
 		try {
-
 			Image image = ImageIO.read(new File("./assets/notfound2.png"));
 			nodatafoundlabel.setIcon(new ImageIcon(image.getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
 
@@ -336,8 +328,8 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 		resetFiltersForModeChange();
 	}
 
-	// ==== Extracted helper: configure Faculty "subject-wise" or "student-wise"
-	// mode ====
+	// ==== Extracted helper: configure Faculty "subject-wise" or "student-wise" mode
+	// ====
 	private void configureFacultySubjectOrStudentMode(JButton active, JButton other1, JButton other2,
 													  String labelText) {
 		activeButton(active);
@@ -382,6 +374,47 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 		String strroll = table.getValueAt(row, 0) + "";
 		long rollnumber = Long.parseLong(strroll);
 		return new StudentData().getStudentDetails(courcecode, sem, rollnumber);
+	}
+
+	// ==== NEW helpers: common marks-report logic to reduce duplication ====
+
+	/** Choose the correct marks list based on the active mode (student/subject/class). */
+	private ArrayList<Marks> getMarksReportList(Marks m) {
+		if (studentwicebutton.getName().equals("Active")) {
+			return new StudentData().getMarkssheetOfStudent(m.getCourceCode(), m.getSemorYear(), m.getRollNumber());
+		} else if (subjectwicebutton.getName().equals("Active")) {
+			return new StudentData().getMarksheetReportBySubject(m);
+		} else if (classwicebutton.getName().equals("Active")) {
+			return new StudentData().getMarksheetReportByClass(m);
+		}
+		return new ArrayList<>();
+	}
+
+	/** Add a single marks row into the model (centralized row logic). */
+	private void addMarksRow(DefaultTableModel model, Marks context, Marks rowData, int rowIndex) {
+		model.addRow(new Object[0]);
+		model.setValueAt(rowData.getRollNumber(), rowIndex, 0);
+		model.setValueAt(rowData.getStudentName(), rowIndex, 1);
+		model.setValueAt(context.getCourceCode() + "-" + context.getSemorYear(), rowIndex, 2);
+		model.setValueAt(rowData.getSubjectName(), rowIndex, 3);
+		model.setValueAt(rowData.getMaxPracticalMarks() + rowData.getMaxTheoryMarks(), rowIndex, 4);
+		model.setValueAt(rowData.getPracticalMarks() + rowData.getTheoryMarks(), rowIndex, 5);
+	}
+
+	/** Center specific columns and apply a common renderer. */
+	private void configureCenteredColumns(int... columns) {
+		DefaultTableCellRenderer cellrenderer = new DefaultTableCellRenderer();
+		cellrenderer.setHorizontalAlignment(JLabel.CENTER);
+		for (int col : columns) {
+			table.getColumnModel().getColumn(col).setCellRenderer(cellrenderer);
+		}
+	}
+
+	/** Common table selection & resize configuration (used in both modes). */
+	private void configureCommonTableSelectionAndResize() {
+		table.setSelectionBackground(new Color(240, 255, 255));
+		table.setSelectionForeground(Color.black);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 	}
 
 	public MarkSheetReportPanel(AdminMain am) {
@@ -519,7 +552,6 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 
 			} else {
 				String cource = (String) courcenamecombo.getSelectedItem();
-
 				semoryearcombo.setModel(new DefaultComboBoxModel<String>(new CourceData().getSemorYear(cource)));
 			}
 
@@ -533,7 +565,6 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 				if (totalsub != null) {
 					subjectorrollcombo.setModel(new DefaultComboBoxModel<String>(totalsub));
 				} else {
-
 					subjectorrollcombo.setModel(new DefaultComboBoxModel<String>(new String[] { "No Subject Found" }));
 				}
 			} else if (studentwicebutton.getName().equals("Active")) {
@@ -565,9 +596,7 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 					Errorlabel.setBounds(tf.getX(), tf.getY() + tf.getHeight() - 5, 400, 26);
 				} else if (subjectorrollcombo.isVisible() && subjectorrollcombo.getSelectedIndex() == 0) {
 					showerror(subjectorrollcombo);
-				}
-
-				else {
+				} else {
 					this.createtablemodel();
 
 				}
@@ -627,16 +656,10 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 		table.getColumnModel().getColumn(3).setHeaderRenderer(
 				new HeaderRendererForCheckBox(table.getTableHeader(), 3));
 
-		DefaultTableCellRenderer cellrenderer = new DefaultTableCellRenderer();
-		cellrenderer.setHorizontalAlignment(JLabel.CENTER);
-		table.getColumnModel().getColumn(0).setCellRenderer(cellrenderer);
-		table.getColumnModel().getColumn(1).setCellRenderer(cellrenderer);
-		table.getColumnModel().getColumn(2).setCellRenderer(cellrenderer);
-		table.setSelectionBackground(new Color(240, 255, 255));
-		table.setSelectionForeground(Color.black);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-		this.setIcons(table, 3, new ImageIcon("./assets/unselectedcheckboxicon.png"),
-				new ImageIcon("./assets/selectedcheckboxicon.png"));
+		// Use new helpers instead of inline duplication:
+		configureCenteredColumns(0, 1, 2);
+		configureCommonTableSelectionAndResize();
+
 		scrollPane.setVisible(true);
 		if (list.size() == 0) {
 			noDataFound();
@@ -656,40 +679,42 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 
 	public void createtablemodel() {
 		nodatafoundlabel.setVisible(false);
-		Marks m = new Marks();
-		m.setCourceCode(new CourceData().getCourcecode(courcenamecombo.getSelectedItem() + ""));
-		m.setSemorYear(semoryearcombo.getSelectedIndex());
-		if (subjectwicebutton.getName().equals("Active")) {
-			m.setSubjectName(subjectorrollcombo.getSelectedItem() + "");
-			m.setSubjectCode(new SubjectData().getSubjectCode(m.getCourceCode(), m.getSemorYear(), m.getSubjectName()));
-		} else if (classwicebutton.getName().equals("Active")) {
-			m.setSubjectName("All");
-		} else if (studentwicebutton.getName().equals("Active")) {
-			m.setRollNumber(Long.parseLong(subjectorrollcombo.getSelectedItem() + ""));
-		}
-		table.setModel(createModel(m));
-		scrollPane.setSize(scrollPane.getWidth(), 40 + (totalstudent * 40));
-		this.setSize(1116, scrollPane.getY() + scrollPane.getHeight() + 40);
+		if (courcenamecombo.getSelectedIndex() == 0
+				|| (semoryearcombo.isVisible() && semoryearcombo.getSelectedIndex() == 0)
+				|| (subjectorrollcombo.isVisible() && subjectorrollcombo.getSelectedIndex() == 0)) {
+			scrollPane.setVisible(false);
+		} else {
+			Marks m = new Marks();
+			m.setCourceCode(new CourceData().getCourcecode(courcenamecombo.getSelectedItem() + ""));
+			m.setSemorYear(semoryearcombo.getSelectedIndex());
+			if (subjectwicebutton.getName().equals("Active")) {
+				m.setSubjectName(subjectorrollcombo.getSelectedItem() + "");
+				m.setSubjectCode(
+						new SubjectData().getSubjectCode(m.getCourceCode(), m.getSemorYear(), m.getSubjectName()));
+			} else if (classwicebutton.getName().equals("Active")) {
+				m.setSubjectName("All");
+			} else if (studentwicebutton.getName().equals("Active")) {
+				m.setRollNumber(Long.parseLong(subjectorrollcombo.getSelectedItem() + ""));
+			}
+			table.setModel(createModel(m));
+			scrollPane.setSize(scrollPane.getWidth(), 40 + (totalstudent * 40));
+			this.setSize(1116, scrollPane.getY() + scrollPane.getHeight() + 40);
 
-		table.getColumnModel().getColumn(0).setMaxWidth(200);
-		table.getColumnModel().getColumn(1).setMaxWidth(250);
-		table.getColumnModel().getColumn(2).setMaxWidth(200);
-		table.getColumnModel().getColumn(3).setMaxWidth(250);
-		table.getColumnModel().getColumn(4).setMaxWidth(230);
-		table.getColumnModel().getColumn(5).setMaxWidth(200);
-		DefaultTableCellRenderer cellrenderer = new DefaultTableCellRenderer();
-		cellrenderer.setHorizontalAlignment(JLabel.CENTER);
-		table.getColumnModel().getColumn(0).setCellRenderer(cellrenderer);
-		table.getColumnModel().getColumn(2).setCellRenderer(cellrenderer);
-		table.getColumnModel().getColumn(3).setCellRenderer(cellrenderer);
-		table.getColumnModel().getColumn(4).setCellRenderer(cellrenderer);
-		table.getColumnModel().getColumn(5).setCellRenderer(cellrenderer);
-		table.setSelectionBackground(new Color(240, 255, 255));
-		table.setSelectionForeground(Color.black);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-		scrollPane.setVisible(true);
-		if (totalstudent == 0) {
-			noDataFound();
+			table.getColumnModel().getColumn(0).setMaxWidth(200);
+			table.getColumnModel().getColumn(1).setMaxWidth(250);
+			table.getColumnModel().getColumn(2).setMaxWidth(200);
+			table.getColumnModel().getColumn(3).setMaxWidth(250);
+			table.getColumnModel().getColumn(4).setMaxWidth(230);
+			table.getColumnModel().getColumn(5).setMaxWidth(200);
+
+			// Use shared helpers for renderer + selection:
+			configureCenteredColumns(0, 2, 3, 4, 5);
+			configureCommonTableSelectionAndResize();
+
+			scrollPane.setVisible(true);
+			if (totalstudent == 0) {
+				noDataFound();
+			}
 		}
 
 	}
@@ -706,23 +731,9 @@ public class MarkSheetReportPanel extends JPanel implements ActionListener {
 			}
 		};
 
-		ArrayList<Marks> list = null;
-		if (studentwicebutton.getName().equals("Active")) {
-			list = new StudentData().getMarkssheetOfStudent(m.getCourceCode(), m.getSemorYear(), m.getRollNumber());
-		} else if (subjectwicebutton.getName().equals("Active")) {
-			list = new StudentData().getMarksheetReportBySubject(m);
-		} else if (classwicebutton.getName().equals("Active")) {
-			list = new StudentData().getMarksheetReportByClass(m);
-		}
+		ArrayList<Marks> list = getMarksReportList(m);  // <— helper replaces duplicated if/else
 		for (int i = 0; i < list.size(); i++) {
-
-			model.addRow(new Object[0]);
-			model.setValueAt(list.get(i).getRollNumber(), i, 0);
-			model.setValueAt(list.get(i).getStudentName(), i, 1);
-			model.setValueAt(m.getCourceCode() + "-" + m.getSemorYear(), i, 2);
-			model.setValueAt(list.get(i).getSubjectName(), i, 3);
-			model.setValueAt(list.get(i).getMaxPracticalMarks() + list.get(i).getMaxTheoryMarks(), i, 4);
-			model.setValueAt(list.get(i).getPracticalMarks() + list.get(i).getTheoryMarks(), i, 5);
+			addMarksRow(model, m, list.get(i), i);      // <— helper replaces per-row assignments
 		}
 		totalstudent = list.size();
 		table.setEnabled(true);

@@ -53,7 +53,6 @@ import collegeapplication.subject.AssignSubjectPanel;
 import collegeapplication.subject.SubjectPanel;
 
 /*
- * Duplicated Blocks 20
  * Title : FacultyMain.java
  * Created by : Ajaysinh Rathod
  * Purpose : Main faculty frame
@@ -402,9 +401,9 @@ public class FacultyMain extends JFrame implements ActionListener {
 	/**
 	 * Create, configure and show a scroll pane for a given panel.
 	 *
-	 * @param panel            inner panel
+	 * @param panel             inner panel
 	 * @param verticalIncrement scroll bar unit increment
-	 * @param name             optional scroll pane name (can be null)
+	 * @param name              optional scroll pane name (can be null)
 	 */
 	private JScrollPane createScrollPaneForPanel(JPanel panel, int verticalIncrement, String name) {
 		JScrollPane scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
@@ -427,6 +426,24 @@ public class FacultyMain extends JFrame implements ActionListener {
 			timer.stop();
 		}
 		new FacultyData().setActiveStatus(false, f.getFacultyId());
+	}
+
+	/** Small helper for confirmation dialogs. */
+	private boolean confirmDialog(String message, String title) {
+		int result = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
+		return result == JOptionPane.YES_OPTION;
+	}
+
+	/** Helper to open a simple (non-scrolling) panel. */
+	private void openSimplePanel(JButton button, JPanel panel) {
+		activeButton(button);
+		configureAndShowPanel(panel);
+	}
+
+	/** Helper to open a scrollable panel. */
+	private JScrollPane openScrollPanel(JButton button, JPanel panel, int verticalIncrement, String name) {
+		activeButton(button);
+		return createScrollPaneForPanel(panel, verticalIncrement, name);
 	}
 
 	public void disablepanel() {
@@ -482,89 +499,76 @@ public class FacultyMain extends JFrame implements ActionListener {
 
 	public void openPanel(Object source) {
 		if (source == homebutton) {
-			activeButton(homebutton);
 			homepanel = new HomePanel(f);
-			configureAndShowPanel(homepanel);
+			openSimplePanel(homebutton, homepanel);
 			homepanel.setLastLogin(lastlogin);
 
-		}
-
-		else if (source == subjectbutton) {
-			activeButton(subjectbutton);
+		} else if (source == subjectbutton) {
 			subjectpanel = new SubjectPanel(this);
-			configureAndShowPanel(subjectpanel);
+			openSimplePanel(subjectbutton, subjectpanel);
+
 		} else if (source == studentsbutton) {
-			activeButton(studentsbutton);
 			studentpanel = new StudentPanel(this);
-			configureAndShowPanel(studentpanel);
+			openSimplePanel(studentsbutton, studentpanel);
+
 		} else if (source == faculitiesbutton) {
-			activeButton(faculitiesbutton);
 			facultypanel = new FacultyPanel(this);
-			configureAndShowPanel(facultypanel);
+			openSimplePanel(faculitiesbutton, facultypanel);
 
 		} else if (source == assignedsubjectbutton) {
-			activeButton(assignedsubjectbutton);
 			assignsubjectpanel = new AssignSubjectPanel(this);
-			configureAndShowPanel(assignsubjectpanel);
+			openSimplePanel(assignedsubjectbutton, assignsubjectpanel);
 
 		} else if (source == entermarksbutton) {
-
-			activeButton(entermarksbutton);
 			entermarkspanel = new EnterMarksPanel(this);
-			entermarkspanelscroll = createScrollPaneForPanel(entermarkspanel, 16, null);
+			entermarkspanelscroll = openScrollPanel(entermarksbutton, entermarkspanel, 16, null);
 
 		} else if (source == marksheetreportbutton) {
-			activeButton(marksheetreportbutton);
 			marksheetreportpanel = new MarkSheetReportPanel(this);
-			marksheetreportpanelscroll = createScrollPaneForPanel(marksheetreportpanel, 80,
+			marksheetreportpanelscroll = openScrollPanel(marksheetreportbutton, marksheetreportpanel, 80,
 					"Marksheet Report Panel Scroll");
+
 		} else if (source == markattandancebutton) {
-			activeButton(markattandancebutton);
 			markattandancepanel = new MarkAttandancePanel(this);
-			markattandancepanelscroll = createScrollPaneForPanel(markattandancepanel, 16, null);
+			markattandancepanelscroll = openScrollPanel(markattandancebutton, markattandancepanel, 16, null);
+
 		} else if (source == attandancereportbutton) {
-			activeButton(attandancereportbutton);
 			attandancereportpanel = new AttandanceReportPanel(this);
-			attandancereportpanelscroll = createScrollPaneForPanel(attandancereportpanel, 16,
+			attandancereportpanelscroll = openScrollPanel(attandancereportbutton, attandancereportpanel, 16,
 					"Attadance Report Panel Scroll");
+
 		} else if (source == chatbutton) {
-			activeButton(chatbutton);
 			chatmainpanel = new ChatMainPanel(this);
-			configureAndShowPanel(chatmainpanel);
+			openSimplePanel(chatbutton, chatmainpanel);
 
 		} else if (source == searchbutton) {
-			activeButton(searchbutton);
 			searchpanel = new SearchPanel(this);
-			configureAndShowPanel(searchpanel);
+			openSimplePanel(searchbutton, searchpanel);
 
 		} else if (source == notificationbutton) {
-			activeButton(notificationbutton);
+			notificationpanel = new NotificationPanel(this);
+			openSimplePanel(notificationbutton, notificationpanel);
 			if (totalnewnotification != null && totalnewnotification.isVisible()) {
 				totalnewnotification.setVisible(false);
 			}
-			notificationpanel = new NotificationPanel(this);
-			configureAndShowPanel(notificationpanel);
 
 		} else if (source == contactusbutton) {
-			activeButton(contactusbutton);
 			adminprofilepanel = new AdminProfilePanel();
-			configureAndShowPanel(adminprofilepanel);
+			openSimplePanel(contactusbutton, adminprofilepanel);
+
 		} else if (source == myprofilebutton) {
-			activeButton(myprofilebutton);
 			viewfacultypanel = new ViewFacultyPanel(f, this);
-			configureAndShowPanel(viewfacultypanel);
+			openSimplePanel(myprofilebutton, viewfacultypanel);
+
 		} else if (source == exitbutton) {
-			int result = JOptionPane.showConfirmDialog(null, "Do you want to exit this application ?", "Exit",
-					JOptionPane.INFORMATION_MESSAGE);
-			if (result == JOptionPane.YES_OPTION) {
+			if (confirmDialog("Do you want to exit this application ?", "Exit")) {
 				setFacultyInactiveAndStopTimer();
 				disablepanel();
 				System.exit(0);
 			}
+
 		} else if (source == logoutbutton) {
-			int result = JOptionPane.showConfirmDialog(null, "Do you want to logout this application ?", "Logout",
-					JOptionPane.INFORMATION_MESSAGE);
-			if (result == JOptionPane.YES_OPTION) {
+			if (confirmDialog("Do you want to logout this application ?", "Logout")) {
 				setFacultyInactiveAndStopTimer();
 				LoginPageFrame loginpageframe = new LoginPageFrame();
 				loginpageframe.setVisible(true);
